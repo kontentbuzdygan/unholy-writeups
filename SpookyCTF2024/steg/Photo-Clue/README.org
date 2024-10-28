@@ -6,7 +6,7 @@ A seemingly innocuous old photo file has emerged, but Mary Morse suspects it may
 #+END_QUOTE
 
 We are given a Windows memory dump file. Analyzing the processes with =vol.py -f image.raw windows.pslist.PsList= doesn't really reveal anything suspicious expect a =Windows.Photo= process. From the description it looks like they are talking about a real image instead of a disk image, so I decided to dump all files with =vol.py -f image.raw windows.filescan.FileScan= and look for =.jpg= files. There were three copies of the same image in a location =C:\\User\\johndoe\\Desktop=. I dumped them with =vol.py -f image.raw -o <output> windows.dumpfiles --virtaddr <addr>=. Running =binwalk= spew out a password-protected PDF file. Extracting a password hash from this file =pdf2john.pl secret.pdf > hash=
- and running John The Ripper against it with rockyou.txt dictionary =john — wordlist=/root/wordlists/1000000-password-seclists.txt hash= outputs a password =spooky2024=. The content of this PDF is binary-encoded:
+ and running John The Ripper against it with rockyou.txt dictionary =john — wordlist=rockyou.txt hash= outputs a password =spooky2024=. The content of this PDF is binary-encoded:
 
 #+BEGIN_SRC
 01001110 01001001 01000011 01000011 01111011 01001101 00110000 01110010 01110011
