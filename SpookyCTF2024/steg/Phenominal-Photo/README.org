@@ -19,7 +19,7 @@ MAP: LEFT, UP, DOWN, LEFT, DOWN, RIGHT, RIGHT, DOWN, LEFT, UP, LEFT, RIGHT, UP
 REMINDER THAT OUR GPS IS A LITTLE FUNKY, IT ONLY TAKES THE FIRST LETTER OF EACH DIRECTION WE WANT TO GO (STUPID MEMORY MANAGEMENT)
 #+END_SRC
 
-From this we can construct a password to the zip =LUDLDRRDLULRU=, which contains a =myrequest.txt=, which is also encoded in Alien Language Cipher:
+From this we can construct a password to the zip =LUDLDRRDLULRU=, which contains a =myrequest.txt= file also encoded in Alien Language Cipher:
 
 =⋏⟟☊☊{⊑⟒⌰⌿_⋔⟒_⎎⟟⋏⎅_⏁⊑⟒_⌿⌰⏃⋏⟒⏁_⏚0⍜}=
 
