@@ -1,0 +1,28 @@
+* Phenominal-Photo
+#+BEGIN_QUOTE
+Simon was spotted dwelling under the clock-tower yet again, this time taking pictures. He seems to have captured a strange object in the far far distance going left, right, up, and down seemingly lost or out of control. There is a strange aura radiating from the photo, pulsations even, like an SOS. Can you figure out this strange phenomenon??
+#+END_QUOTE
+
+Running =binwalk= on the image outputs a directory with a file =Map.txt= and a password protected zip =gps.zip=. Contents of the Map.txt look like a Minecraft Enchantment Table language:
+
+#+BEGIN_SRC
+⋔⏃⌿: ⌰⟒⎎⏁, ⎍⌿, ⎅⍜⍙⋏, ⌰⟒⎎⏁, ⎅⍜⍙⋏, ⍀⟟☌⊑⏁, ⍀⟟☌⊑⏁, ⎅⍜⍙⋏, ⌰⟒⎎⏁, ⎍⌿, ⌰⟒⎎⏁, ⍀⟟☌⊑⏁, ⎍⌿
+
+⍀⟒⋔⟟⋏⎅⟒⍀ ⏁⊑⏃⏁ ⍜⎍⍀ ☌⌿⌇ ⟟⌇ ⏃ ⌰⟟⏁⏁⌰⟒ ⎎⎍⋏☍⊬, ⟟⏁ ⍜⋏⌰⊬ ⏁⏃☍⟒⌇ ⏁⊑⟒ ⎎⟟⍀⌇⏁ ⌰⟒⏁⏁⟒⍀ ⍜⎎ ⟒⏃☊⊑ ⎅⟟⍀⟒☊⏁⟟⍜⋏ ⍙⟒ ⍙⏃⋏⏁ ⏁⍜ ☌⍜ (⌇⏁⎍⌿⟟⎅ ⋔⟒⋔⍜⍀⊬ ⋔⏃⋏⏃☌⟒⋔⟒⋏⏁)
+#+END_SRC
+
+Typing the first few letters into Google search gives a few hits of an "Alien Language Cipher". Decoding the text with an online tool gives a following result:
+
+#+BEGIN_SRC
+MAP: LEFT, UP, DOWN, LEFT, DOWN, RIGHT, RIGHT, DOWN, LEFT, UP, LEFT, RIGHT, UP
+
+REMINDER THAT OUR GPS IS A LITTLE FUNKY, IT ONLY TAKES THE FIRST LETTER OF EACH DIRECTION WE WANT TO GO (STUPID MEMORY MANAGEMENT)
+#+END_SRC
+
+From this we can construct a password to the zip =LUDLDRRDLULRU=, which contains a =myrequest.txt=, which is also encoded in Alien Language Cipher:
+
+=⋏⟟☊☊{⊑⟒⌰⌿_⋔⟒_⎎⟟⋏⎅_⏁⊑⟒_⌿⌰⏃⋏⟒⏁_⏚0⍜}=
+
+This gets translated into:
+
+=NICC{HELP_ME_FIND_THE_PLANET_B0O}=

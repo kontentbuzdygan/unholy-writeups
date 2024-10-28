@@ -1,0 +1,8 @@
+* whispers-in-morse
+#+BEGIN_QUOTE
+Mary got a letter from Maya talking about seeing a cryptid sighting but doesn't want other people to know, the only thing attached is this picture? She wonders if there could be a secret message hidden inside.
+#+END_QUOTE
+
+Running =strings= on the attached image gives us the following string: =Password: M.A.__.R.Y=. Providing this password into =steghide= allows us to extract a =flag.txt= file.
+
+=NICC{tHe_whIspeRz_iN_Th3_aiR}=

@@ -1,0 +1,19 @@
+* Photo-Clue
+#+BEGIN_QUOTE
+A seemingly innocuous old photo file has emerged, but Mary Morse suspects it may hold the key to deciphering The Consortium's next move. Your task is to analyze the metadata, uncover the true nature of the file, and submit the flag before The Consortium acts. Time is running out—can you crack the mystery behind the photo?
+
+(Note: If you choose to use volatility2.6, use profile Win10x64_19041)
+#+END_QUOTE
+
+We are given a Windows memory dump file. Analyzing the processes with =vol.py -f image.raw windows.pslist.PsList= doesn't really reveal anything suspicious expect a =Windows.Photo= process. From the description it looks like they are talking about a real image instead of a disk image, so I decided to dump all files with =vol.py -f image.raw windows.filescan.FileScan= and look for =.jpg= files. There were three copies of the same image in a location =C:\\User\\johndoe\\Desktop=. I dumped them with =vol.py -f image.raw -o <output> windows.dumpfiles --virtaddr <addr>=. Running =binwalk= spew out a password-protected PDF file. Extracting a password hash from this file =pdf2john.pl secret.pdf > hash=
+ and running John The Ripper against it with rockyou.txt dictionary =john — wordlist=/root/wordlists/1000000-password-seclists.txt hash= outputs a password =spooky2024=. The content of this PDF is binary-encoded:
+
+#+BEGIN_SRC
+01001110 01001001 01000011 01000011 01111011 01001101 00110000 01110010 01110011
+01100101 01011111 01010000 01101000 00110000 01110100 00110000 01011111 01010011
+00110011 01100011 01110010 01100101 01110100 01110011 01111101 00001010 00001010
+#+END_SRC
+
+Which gets translated into:
+
+=NICC{M0rse_Ph0t0_S3crets}=
